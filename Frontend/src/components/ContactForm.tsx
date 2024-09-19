@@ -110,9 +110,11 @@ export default function ContactForm() {
           <button type="submit" className="submitbutton">send melding</button>
         </form>
       </section>
-
-      <p>Her vises det som lagres i usestate for meldinger og kunne blitt sendt videre til lagring i server:</p>
-      <pre>{JSON.stringify(messages, null, 2)}</pre>
+      <section className="formflex">
+        <h2>Sendte meldinger</h2>
+        <p>Her vises det som lagres i usestate for meldinger og kunne blitt sendt videre til lagring i server:</p>
+        <pre>{JSON.stringify(messages, null, 2)}</pre>
+      </section>
     </>
   );
 }

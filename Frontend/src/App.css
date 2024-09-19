@@ -3,16 +3,43 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
-  background-color: rgb(68, 105, 105);
+  background-image: linear-gradient(#446969, #23dfb6, #446969);
+  background-color: #446969;
   margin: 0;
 }
 
 .grid-header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: flex-end;
   background-color: rgb(74, 182, 167);
   padding: 5px;
+}
+
+.grid-header h2 {
+  justify-self: start; 
+  padding-left: 50px;
+}
+
+.grid-header nav {
+  justify-self: end; 
+  padding-right: 50px;
+}
+
+.grid-header {
+  display: grid;
+  grid-template-columns: 1fr auto; 
+  align-items: center; 
+  background-color: rgb(74, 182, 167);
+  padding: 5px;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.grid-header .logo {
+  justify-self: start; 
+}
+
+.grid-header .nav {
+  justify-self: end; 
 }
 
 .grid-main {
@@ -37,8 +64,19 @@ body {
   border-radius: 10px;
   background-color: #a8e9cb;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
 }
+
+.grid-experience-item { 
+  display: flex;
+  flex-direction:column;
+  justify-content: top;
+  border-radius: 10px;
+  background-color: #a8e9cb;
+  text-align: center;
+  padding: 20px;
+}
+
 
 ul li {
   display: inline;
@@ -54,6 +92,8 @@ ul li a{
   color: aquamarine;
   font-size: 1.25em;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
   
 }
 
@@ -61,6 +101,7 @@ h2 {
 text-align: center;
 font-size: 30px;
 color: aquamarine;
+padding: 10px;
 
 }
 
@@ -82,11 +123,22 @@ input[type="file"] {
 }
 
 .submitbutton {
+  color: hsl(170, 100%, 80%);
   font-size: 15px;
   border-radius: 10px;
+  border: 1px;
   padding: 10px;
   margin-top: 20px;
-  background-color: rgb(154, 252, 252);
+  margin-bottom: 20px;
+  background-color: rgb(1, 154, 165);
+  transition: all 0.1s ease-in-out;
+}
+
+.submitbutton:hover {
+  background-color: rgb(3, 221, 236);
+  color: hsl(169, 100%, 92%);
+  box-shadow: 0 5px 15px rgba(15, 158, 127, 0.4);
+
 }
 
 footer {
@@ -107,3 +159,11 @@ footer {
   width: 70%;
 
 }
+
+.Experience-grid-articles {
+  display: flex; /* Change to flex layout */
+  gap: 20px;
+  padding: 20px;
+  justify-content: center; /* Center items horizontally */
+}
+

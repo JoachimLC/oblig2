@@ -1,23 +1,14 @@
 import { useState, type FormEvent } from "react";
-import { ProjectsProps } from "./Projects";
+import { ProjectProps } from "./Types";
+import { submitProjectProps } from "./Types";
 
-type ProjectFormProps = {
-  setProjectData: (callback: (prevProjects: any[]) => any[]) => void;
-  projects: ProjectsProps['projects'];
-};
-
-export default function ContactForm({ setProjectData, projects }: ProjectFormProps) {
-  type FormData = {
-    id: string;
-    title: string;
-    description: string;
-    technologies: string;
-    link: string;
-  };
+export default function SubmitProject({ setProjectData }: submitProjectProps) {
+  
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [technologies, setTechnologies] = useState("");
+  const [technologies, setTechnologies] = useState<string[]>([]);
+  const [newTechnology, setNewTechnology] = useState(""); 
   const [link, setLink] = useState("");
 
   const [titleValid, setTitleValid] = useState(false);
@@ -54,10 +45,19 @@ export default function ContactForm({ setProjectData, projects }: ProjectFormPro
     validateDescription(input.value);
   };
 
-  const updateTechnologies = (event: FormEvent<HTMLInputElement>) => {
-    const input = event.target as HTMLInputElement | null;
-    if (!input) return;
-    setTechnologies(input.value);
+  const addTechnology = () => {
+    if (newTechnology.trim() !== "" && !technologies.includes(newTechnology)) {
+      setTechnologies([...technologies, newTechnology]);
+      setNewTechnology("");
+    }
+  };
+
+  const removeTechnology = (tech: string) => {
+    setTechnologies(technologies.filter(t => t !== tech));
+  };
+
+  const updateNewTechnology = (event: FormEvent<HTMLInputElement>) => {
+    setNewTechnology(event.currentTarget.value);
   };
 
   const updateLink = (event: FormEvent<HTMLInputElement>) => {
@@ -66,14 +66,16 @@ export default function ContactForm({ setProjectData, projects }: ProjectFormPro
     setLink(input.value);
   };
 
-  const addProjectToList = (title: string, description: string, technologies: string, link: string) => {
-    const newProject: FormData = {
+  const addProjectToListOfProjects = (title: string, description: string, technologies: string[], link: string) => {
+    const newProject: ProjectProps = {
       id: crypto.randomUUID(),
       title,
       description,
       technologies,
       link,
     };
+
+    console.log("nytt prosjekt", newProject);
 
     setProjectData((prevProjects) => [...prevProjects, newProject]);
   };
@@ -83,11 +85,11 @@ export default function ContactForm({ setProjectData, projects }: ProjectFormPro
 
     if (!title || !descriptionValid) return;
 
-    addProjectToList(title, description, technologies, link);
-    console.log(projects[projects.length-1])
+    addProjectToListOfProjects(title, description, technologies, link);
     setTitle("");
     setDescription("");
-    setTechnologies("");
+    setTechnologies([]);
+    setNewTechnology("");
     setLink("");
     setTitleIsDirty(false);
     setTitleIsTouched(false);
@@ -100,6 +102,7 @@ export default function ContactForm({ setProjectData, projects }: ProjectFormPro
   return (
     <section className="formflex">
       <h2>Legg til et nytt prosjekt</h2>
+      <p>(nye prosjekter legges til i den lokale usestate for prosjekter og lastes dermed inn som nytt prosjekt over)</p>
       <form onSubmit={SubmitWithState}>
         <label htmlFor="title">
           <p>Tittel:</p>
@@ -133,7 +136,23 @@ export default function ContactForm({ setProjectData, projects }: ProjectFormPro
 
         <label htmlFor="technologies">
           <p>Teknologier:</p>
-          <input type="text" id="technologies" name="technologies" onChange={updateTechnologies} value={technologies} />
+          <input
+            type="text"
+            id="newTechnology"
+            name="newTechnology"
+            onChange={updateNewTechnology}
+            value={newTechnology}
+          />
+          <button type="button" className="submitbutton" onClick={addTechnology}>Legg til teknologi</button>
+            <ul>
+            {technologies.map((technology, index) => (
+
+                <li key={index}>
+                <p>{technology}</p>
+                <button type="button" className="submitbutton" onClick={() => removeTechnology(technology)}>Fjern</button>
+                </li>
+            ))}
+            </ul>
         </label>
 
         <label htmlFor="link">

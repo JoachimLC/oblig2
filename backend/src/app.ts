@@ -13,24 +13,21 @@ app.get("/projects", (c) => {
       title: "Portfolio Website",
       description: "A personal portfolio website",
       technologies: ["React", "JavaScript", "CSS", "HTML"],
-      link: "https://Joachim.com/portfolio",
-      image: "/static/default-image.jpg"
+      link: "https://Joachim.com/portfolio"
     },
     {
       id:2,
       title: "Online store",
       description: "An online store platform built with Django.",
       technologies: ["Django", "Python", "HTML"],
-      link: "https://onlinestore.com",
-      image: "/static/default-image.jpg"
+      link: "https://onlinestore.com"
     },
     {
       id:3,
       title: "AI Chatbot",
       description: "An AI-powered chatbot",
       technologies: ["Python", "CHATGPT", "Flask"],
-      link: "https://github.com/johndoe/ai-chatbot",
-      image: "/static/default-image.jpg"
+      link: "https://github.com/johndoe/ai-chatbot"
     }
 ],
   });
@@ -38,13 +35,17 @@ app.get("/projects", (c) => {
 
 app.get("/student", (c) => {
   return c.json({
-    name: "Halgeir Geirson",
+    name: "Joachim Lundsgaard Christiansen",
     degree: "Bachelor IT",
     points: 180,
     email: "student@hiof.no",
     experiences: [
-      { name: "Figma UI for customer X" },
-      { name: "Website for customer Y" }
+      { description: "Figma UI for customer X" },
+      { description: "Website for customer Y" },
+      { description: "Figma UI for customer X" },
+      { description: "Website for customer Y" },
+      { description: "Figma UI for customer X" },
+      { description: "Website for customer Y" }
     ]
   });
 });

@@ -1,16 +1,16 @@
+import Contact from "./Contact";
+import { HeaderProps } from "./Types";
 
-type HeaderProps = {
-    student: string;
-    degree: string;
-    points: number;
-  };
   
-  export default function Header({ student, degree, points }: HeaderProps) {
+  export default function Header({ student, degree, points, email }: HeaderProps) {
     return (
       <header className="grid-article-item">
         <h1>{student}</h1>
         <p>Degree: {degree}</p>
         <p>Points: {points}</p>
+        <Contact email={email}/>
       </header>
+
+      
     );
   }

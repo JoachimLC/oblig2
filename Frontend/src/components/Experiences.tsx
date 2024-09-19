@@ -1,23 +1,17 @@
 import Experience from "./Experience";
-
-type ExperienceItem = {
-  name: string;
-};
-
-type ExperiencesProps = {
-  experiences: ExperienceItem[];
-};
+import { ExperienceProps } from "./Types";
+import { ExperiencesProps } from "./Types";
 
 export default function Experiences({ experiences }: ExperiencesProps) {
   return (
-    <section>
+    <section >
     {experiences.length === 0 ? (
-      <h2 className="warning">Ingen erfaringer</h2>
+      <h2>Ingen erfaringer</h2>
     ) : (
-      <ul>
+      <ul className="Experience-grid-articles">
         {experiences.map((experience, index) => (
           <li key={index}>
-            <Experience description={experience.name} />
+            <Experience description={experience.description} />
           </li>
         ))}
       </ul>

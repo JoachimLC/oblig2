@@ -1,7 +1,5 @@
-export type ExperienceProps = {
-  description?: string;
-};
+import { ExperienceProps } from "./Types";
 
 export default function Experience({ description }: ExperienceProps) {
-  return <p className="grid-article-item">{description}</p>;
+  return <p className="grid-experience-item">{description}</p>;
 }

@@ -1,23 +1,21 @@
-export type projectProp = {
+
+export type ProjectProps = {
   id: number;
   title: string;
   description: string;
-  technologies: string;
-  link: string
-  };
-  
-  export default function Project({
-    title = "Default Title",
-    description = "Default Description",
-    technologies = "Default Technologies",
-    link = "https://default.link",
-  }: projectProp) {
-    return (
-      <>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <p>Technologies used: {technologies}</p>
-        <a href={link} target="_blank" rel="noopener noreferrer">Project Link</a>
-      </>
-      )
-  }
+  technologies: string[];
+  link: string;
+};
+
+export default function Project({ id, title, description, technologies, link }: ProjectProps) {
+  return (
+    <div>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <p>
+        Teknologier: {technologies.join(', ')}
+      </p>
+      <a href={link}>Link til prosjekt</a>
+    </div>
+  );
+}

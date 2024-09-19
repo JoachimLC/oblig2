@@ -1,5 +1,4 @@
 import Experience from "./Experience";
-import { ExperienceProps } from "./Types";
 import { ExperiencesProps } from "./Types";
 
 export default function Experiences({ experiences }: ExperiencesProps) {

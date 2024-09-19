@@ -1,8 +1,7 @@
 import Contact from "./Contact";
 import { HeaderProps } from "./Types";
 
-  
-  export default function Header({ student, degree, points, email }: HeaderProps) {
+export default function Header({ student, degree, points, email }: HeaderProps) {
     return (
       <header className="grid-article-item">
         <h1>{student}</h1>

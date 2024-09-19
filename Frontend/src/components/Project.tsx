@@ -1,11 +1,4 @@
-
-export type ProjectProps = {
-  id: number;
-  title: string;
-  description: string;
-  technologies: string[];
-  link: string;
-};
+import { ProjectProps } from "./Types";
 
 export default function Project({ id, title, description, technologies, link }: ProjectProps) {
   return (

@@ -38,15 +38,15 @@ export default function ProjectsPerTechnology({ projects }: ProjectsProps) {
 
 
   return (
-    <div >
+    <aside >
       <h2>Antall Ganger Teknologi Er Brukt</h2>
-      <ul className="Experience-grid-articles">
+      <ul className="list">
         {technologies.map((tech) => (
-          <li key={tech.technology} className="grid-experience-item">
+          <li key={tech.technology} className="list-item">
             {tech.technology}: {tech.timesUsed}
           </li>
         ))}
       </ul>
-    </div>
+    </aside>
   );
 }

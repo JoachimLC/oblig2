@@ -3,26 +3,18 @@ import { ofetch } from 'ofetch';
 import './App.css';
 import Projects from './components/Projects';
 import { ProjectProps } from './components/Types';
-import Title from './components/Title';
-import Header from './components/Header';
+import StudentHeader from './components/StudentHeader';
 import Experiences from './components/Experiences';
 import ContactForm from './components/ContactForm';
 import SubmitProject from './components/SubmitProject';
-import { ExperienceProps } from './components/Types';
+import { studentProp } from './components/Types';
 import ProjectsPerTechnology from './components/ProjectsPerTechnology';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 
 function App() {
   
-  type studentProp = {
-    name: string;
-    degree: string;
-    points: number;
-    email: string;
-    experiences: ExperienceProps[];
-  };
-
-
   const [projectData, setProjectData] = useState<ProjectProps[]>([]);
   const [studentData, setStudentData] = useState<studentProp | null>(null); 
 
@@ -64,16 +56,21 @@ function App() {
 
   return (
     <>
-      <Header student={studentData.name} degree={studentData.degree} points={studentData.points} email={studentData.email} />
-      <Title title='Erfaringer' />
-      <Experiences experiences={studentData.experiences} />
+      <Header/>
 
-      <Title title='Oversikt over prosjekter'/>
-      <Projects projects={projectData} />
-      <ProjectsPerTechnology projects={projectData}/>
-      <ContactForm/>
+      <main>
+        <StudentHeader student={studentData.name} degree={studentData.degree} points={studentData.points} email={studentData.email} />
+        <Experiences experiences={studentData.experiences} />
 
-      <SubmitProject setProjectData={setProjectData}/>
+        <Projects projects={projectData} />
+        <ProjectsPerTechnology projects={projectData}/>
+        <ContactForm/>
+
+        <SubmitProject setProjectData={setProjectData}/>
+      </main>
+
+      <Footer/>
+
     </>
   );
 }

@@ -1,3 +1,11 @@
+export type studentProp = {
+  name: string;
+  degree: string;
+  points: number;
+  email: string;
+  experiences: ExperienceProps[];
+};
+
 export type ContactProps = {
     email: string;
   };

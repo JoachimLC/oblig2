@@ -2,8 +2,10 @@ import Project from "./Project";
 import { ProjectsProps } from "./Types";
 
 export default function Projects({ projects }: ProjectsProps) {
-    return (
-      <section className="grid-articles">
+  return (
+    <section>
+      <h2 className="projects-title">Oversikt over prosjekter</h2>
+      <div className="grid-articles">
         {projects.length === 0 ? (
           <h2>Ingen prosjekter</h2>
         ) : (
@@ -19,7 +21,7 @@ export default function Projects({ projects }: ProjectsProps) {
             </article>
           ))
         )}
-      </section>
-    );
-  }
-  
+      </div>
+    </section>
+  );
+}

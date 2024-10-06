@@ -100,7 +100,7 @@ export default function SubmitProject({ setProjectData }: submitProjectProps) {
   };
 
   return (
-    <section className="formflex">
+    <section className="componentcard">
       <h2>Legg til et nytt prosjekt</h2>
       <p>(nye prosjekter legges til i den lokale usestate for prosjekter og lastes dermed inn som nytt prosjekt over)</p>
       <form onSubmit={SubmitWithState}>

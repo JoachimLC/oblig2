@@ -1,15 +1,10 @@
-import Contact from "./Contact";
-import { HeaderProps } from "./Types";
+import Navbar from './Navbar';
 
-export default function Header({ student, degree, points, email }: HeaderProps) {
-    return (
-      <header className="grid-article-item">
-        <h1>{student}</h1>
-        <p>Degree: {degree}</p>
-        <p>Points: {points}</p>
-        <Contact email={email}/>
-      </header>
-
-      
-    );
-  }
+export default function Header() {
+  return (
+    <header className="grid-header">
+      <h2>Mitt Portifolio</h2>
+      <Navbar />
+    </header>
+  );
+}
